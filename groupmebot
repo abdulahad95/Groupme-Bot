@@ -1,0 +1,33 @@
+import sys
+from time import sleep, strftime
+
+try:
+        from bs4 import BeautifulSoup
+        import requests
+except Exception as e:
+	sys.exit('Error: %s' % e)
+
+def getwebsite(link):
+	response = requests.get(link)
+	html = response.text
+	return html
+        
+
+def getMaghribinfo():
+        link = 'http://www.salatimes.com/index/index/lat/38.02632348914444/long/-78.51293563842773/method/2/ccode//region//q/UVA#.WTXdzWjytPY'
+        html = getwebsite(link)
+        soup = BeautifulSoup(html, "html.parser")
+        #print (soup.prettify())
+        time = soup.find("tr", class_="info").contents[6].contents
+        time = (str(time))
+        time = (time[2:7])
+        print ('Maghrib today is at ' + time)
+
+#while 1:
+#        hour = strftime('%H')
+#
+#        if hour == '17':
+#                requests.post(
+
+        
+getMaghribinfo()
