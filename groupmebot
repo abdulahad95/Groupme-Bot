@@ -31,3 +31,33 @@ def getMaghribinfo():
 
         
 getMaghribinfo()
+
+
+---------------------------------------
+Command I'm running on terminal to create a bot in a certain group:
+curl -X POST -d '{"bot": { "name": "Manhoos", "group_id": "30838218"}}' - H 'Content-Type: application/json' https:/api.groupme.com/v3/bots?token=MY_TOKEN  
+
+Ouput of this 1st command:
+curl: option -: is unknown
+curl: try 'curl --help' or 'curl --manual' for more information
+
+Another command that I'm trying to run to create a bot:
+curl -X POST https://api.groupme.com/v3/bots?token=yVm9KJMokULdzt4hmS0482y6w8T6Pg0HSV8BU76f&name='manhoos'&group_id='30838218'
+
+Output of this 2nd command:
+{"meta":{"code":"400","errors":["Missing/invalid bot parameters"]},"response":null}
+
+
+
+When I switch the token, name, group_id around like this:
+curl -X POST https://api.groupme.com/v3/bots?name='Manhoos'&group_id='30838218'&token=yVm9KJMokULdzt4hmS0482y6w8T6Pg0HSV8BU76f
+
+Output:
+First it says 
+[1] 58911      <--- no idea what that means
+[2] 58912      <--- no idea what this is either
+then
+{"response":null,"meta":{"code":401,"errors":["unauthorized"]}}
+
+
+
