@@ -8,9 +8,11 @@ except Exception as e:
 	sys.exit('Error: %s' % e)
 
 def getwebsite(link):
-	response = requests.get(link)
-	html = response.text
-	return html
+        response = requests.get(link)
+        if response.status_code != 200:
+                sys.exit()
+        html = response.text
+        return html
         
 
 def getMaghribinfo():
@@ -21,16 +23,25 @@ def getMaghribinfo():
         time = soup.find("tr", class_="info").contents[6].contents
         time = (str(time))
         time = (time[2:7])
-        print ('Maghrib today is at ' + time)
+        text = 'Maghrib today is at ' + time
+        return text
+        #print (text)
+
+def post():
+        values = {'bot_id' : '132b154147f3c7edb6e02ba5b7', 'text' : getMaghribinfo()}
+        requests.post('https://api.groupme.com/v3/bots/post', params = values)
+
+
+post()       
 
 #while 1:
-#        hour = strftime('%H')
-#
-#        if hour == '17':
-#                requests.post(
+        #hour = strftime('%H')
 
-        
-getMaghribinfo()
+        #if hour == '17':
+                #post()
+
+        #sleep(7200)           
+
 
 
 ---------------------------------------
