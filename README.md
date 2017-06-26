@@ -1,1 +1,9 @@
-# Groupme API is confusing. So make sure to look at the commands I've given below the code and how they work on the linux terminal. some of them still don't work and I'm tryna figure out. But the rest do
+
+
+
+
+To check what bots you have in any/all groups:
+
+curl https://api.groupme.com/v3/bots?token=MY_TOKEN
+
+
